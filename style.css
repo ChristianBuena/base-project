@@ -1,0 +1,62 @@
+body {
+    background-color: #000000;
+    color: #FFFFFF;
+    font-family: 'Inter', sans-serif;
+    overflow-x: hidden;
+}
+
+/* Custom Hover Inversion Logic */
+.invert-hover {
+    transition: all 0.5s cubic-bezier(0.19, 1, 0.22, 1);
+    border: 1px solid #FFFFFF;
+}
+
+.invert-hover:hover {
+    background-color: #FFFFFF;
+    color: #000000;
+}
+
+/* Typographic Sizing */
+.mega-text {
+    font-size: clamp(3.5rem, 15vw, 18rem);
+    line-height: 0.8;
+    letter-spacing: -0.05em;
+}
+
+.section-heading {
+    font-size: clamp(2rem, 8vw, 6rem);
+    line-height: 1;
+    letter-spacing: -0.04em;
+}
+
+/* Animation Classes */
+.reveal {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: all 1s cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+.reveal.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+    width: 6px;
+}
+
+::-webkit-scrollbar-track {
+    background: #000;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #fff;
+}
+
+/* Horizontal Divider */
+.divider {
+    height: 1px;
+    background-color: rgba(255, 255, 255, 0.2);
+    width: 100%;
+}
