@@ -19,7 +19,8 @@
     <!-- Navigation -->
     <nav class="fixed top-0 w-full z-50 px-6 py-8 md:px-12 flex justify-between items-center mix-blend-difference">
         <span class="font-black text-2xl tracking-tighter">TBP.</span>
-        <a href="mailto:thaoleya@gmail.com" class="text-[10px] uppercase tracking-[0.3em] border border-white px-4 py-2 hover:bg-white hover:text-black transition-all">Get in Touch</a>
+        <!-- biome-ignore lint/a11y/useButtonType: <explanation> -->
+        <button id="get-in-touch-btn" class="text-[10px] uppercase tracking-[0.3em] border border-white px-4 py-2 hover:bg-white hover:text-black transition-all">Get in Touch</button>
     </nav>
 
     <!-- Section 1: Hero -->
@@ -164,10 +165,6 @@
                         <li>— Google My Business Optimization</li>
                     </ul>
                 </div>
-                <div class="mt-12">
-                    <span class="text-5xl font-black tracking-tighter">$800</span>
-                    <span class="text-xl opacity-60"> + $150/mo</span>
-                </div>
             </div>
 
             <!-- Package 2 -->
@@ -182,10 +179,6 @@
                         <li>— Monthly Performance Insights</li>
                     </ul>
                 </div>
-                <div class="mt-12">
-                    <span class="text-5xl font-black tracking-tighter">$500</span>
-                    <span class="text-xl opacity-60"> /month</span>
-                </div>
             </div>
 
             <!-- Package 3 -->
@@ -199,10 +192,6 @@
                         <li>— Email Marketing Automation</li>
                         <li>— Conversion-Focused Ads</li>
                     </ul>
-                </div>
-                <div class="mt-12">
-                    <span class="text-5xl font-black tracking-tighter">$300</span>
-                    <span class="text-xl opacity-60"> + $550/mo</span>
                 </div>
             </div>
 
@@ -220,10 +209,6 @@
                         <li>— Monthly Strategy Calls</li>
                         <li>— Priority Support Retainer</li>
                     </ul>
-                </div>
-                <div class="mt-12">
-                    <span class="text-5xl font-black tracking-tighter">$800</span>
-                    <span class="text-xl opacity-60"> + $625/mo</span>
                 </div>
             </div>
 
@@ -259,8 +244,7 @@
             <div class="reveal">
                 <h2 class="text-5xl md:text-7xl font-black tracking-tighter leading-none mb-8 uppercase">LET'S BUILD<br>THE BASE.</h2>
                 <div class="space-y-2 text-xl md:text-3xl font-light">
-                    <p><a href="mailto:thaoleya@gmail.com" class="hover:underline">thaoleya@gmail.com</a></p>
-                    <p><a href="tel:+66986260764" class="hover:underline">+66 98 626 0764</a></p>
+                    <p><a href="mailto:cmkbuena@gmail.com" class="hover:underline">cmkbuena@gmail.com</a></p>
                 </div>
             </div>
             <div class="md:text-right reveal flex flex-col justify-end h-full">
@@ -274,6 +258,32 @@
             <span class="hidden md:block">Bangkok / Global / Remote</span>
         </div>
     </footer>
+    <!-- Contact Modal -->
+    <div id="contact-modal" class="modal-overlay" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="modal-heading">
+        <div class="modal-container">
+            <!-- biome-ignore lint/a11y/useButtonType: <explanation> -->
+            <button id="modal-close" class="modal-close" aria-label="Close modal">&times;</button>
+            <p class="text-[10px] uppercase tracking-[0.5em] mb-6 text-white/40">Get in Touch</p>
+            <h2 id="modal-heading" class="text-3xl font-black uppercase tracking-tighter mb-10">Let's Talk.</h2>
+            <form id="contact-form" novalidate>
+                <div class="mb-8">
+                    <label for="from-email" class="block text-[10px] uppercase tracking-[0.3em] mb-3 text-white/50">Your Email</label>
+                    <input type="email" id="from-email" name="from" required autocomplete="email" placeholder="you@example.com" class="modal-input" />
+                    <p id="from-error" class="modal-error" aria-live="polite"></p>
+                </div>
+                <div class="mb-10">
+                    <label for="note-field" class="block text-[10px] uppercase tracking-[0.3em] mb-3 text-white/50">Note</label>
+                    <textarea id="note-field" name="note" required placeholder="Tell us about your project..." rows="5" class="modal-input"></textarea>
+                    <p id="note-error" class="modal-error" aria-live="polite"></p>
+                </div>
+                <button type="submit" class="modal-submit">
+                    <span class="modal-submit-text">Send Message</span>
+                    <span aria-hidden="true">&#8594;</span>
+                </button>
+            </form>
+        </div>
+    </div>
+
     <script src="script.js"></script>
 </body>
 </html>

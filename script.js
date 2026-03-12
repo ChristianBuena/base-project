@@ -17,6 +17,88 @@ document.querySelectorAll('.reveal').forEach((el) => {
     observer.observe(el);
 });
 
+// Contact Modal
+const contactModal = document.getElementById('contact-modal');
+const getInTouchBtn = document.getElementById('get-in-touch-btn');
+const modalClose = document.getElementById('modal-close');
+const contactForm = document.getElementById('contact-form');
+const fromEmailInput = document.getElementById('from-email');
+const noteInput = document.getElementById('note-field');
+const fromError = document.getElementById('from-error');
+const noteError = document.getElementById('note-error');
+
+function openModal() {
+    contactModal.classList.add('open');
+    contactModal.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+    setTimeout(() => fromEmailInput && fromEmailInput.focus(), 50);
+}
+
+function closeModal() {
+    contactModal.classList.remove('open');
+    contactModal.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
+}
+
+function clearErrors() {
+    fromError.textContent = '';
+    noteError.textContent = '';
+    fromEmailInput.classList.remove('invalid');
+    noteInput.classList.remove('invalid');
+}
+
+if (getInTouchBtn) {
+    getInTouchBtn.addEventListener('click', openModal);
+}
+
+if (modalClose) {
+    modalClose.addEventListener('click', closeModal);
+}
+
+if (contactModal) {
+    contactModal.addEventListener('click', (e) => {
+        if (e.target === contactModal) closeModal();
+    });
+}
+
+document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && contactModal.classList.contains('open')) closeModal();
+});
+
+if (contactForm) {
+    contactForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        clearErrors();
+
+        const fromVal = fromEmailInput.value.trim();
+        const noteVal = noteInput.value.trim();
+        const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        let valid = true;
+
+        if (!fromVal || !emailPattern.test(fromVal)) {
+            fromError.textContent = 'Please enter a valid email address.';
+            fromEmailInput.classList.add('invalid');
+            valid = false;
+        }
+
+        if (!noteVal) {
+            noteError.textContent = 'Please enter a message.';
+            noteInput.classList.add('invalid');
+            valid = false;
+        }
+
+        if (!valid) return;
+
+        const subject = encodeURIComponent('New Inquiry from ' + fromVal);
+        const body = encodeURIComponent('From: ' + fromVal + '\n\n' + noteVal);
+        window.location.href = 'mailto:thebaseproject@gmail.com?subject=' + subject + '&body=' + body;
+
+        closeModal();
+        contactForm.reset();
+        clearErrors();
+    });
+}
+
 // Show More / Show Less for Projects
 const showMoreBtn = document.getElementById('show-more-btn');
 const showMoreWrapper = document.getElementById('show-more-wrapper');
